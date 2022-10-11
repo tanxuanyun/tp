@@ -3,9 +3,12 @@ package seedu.address.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.commands.PersonCommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.PersonCommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.address.logic.commands.PersonCommandTestUtil.LINK_INDEX_DESC_AMY;
 import static seedu.address.logic.commands.PersonCommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.PersonCommandTestUtil.PHONE_DESC_AMY;
+import static seedu.address.logic.commands.PersonCommandTestUtil.VALID_LINK_INDEX_AMY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
 
@@ -78,8 +81,9 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddPersonCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
-        Person expectedPerson = new PersonBuilder(AMY).withTags().build();
+        String addCommand = AddPersonCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + LINK_INDEX_DESC_AMY;
+        Person expectedPerson = new PersonBuilder(AMY).withTags().withLinkIndex(VALID_LINK_INDEX_AMY).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedPerson);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

@@ -15,6 +15,7 @@ import seedu.address.model.internship.InternshipRole;
 import seedu.address.model.internship.InternshipStatus;
 import seedu.address.model.internship.InterviewDate;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.LinkIndex;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.PersonId;
 import seedu.address.model.person.Phone;
@@ -129,6 +130,23 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String LinkIndex} into a {@code LinkIndex}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code LinkIndex} is invalid.
+     */
+    public static LinkIndex parseLinkIndex(String linkIndex) throws ParseException {
+        if (linkIndex == null) {
+            return null;
+        }
+        String trimmedLinkIndex = linkIndex.trim();
+        if (!InternshipId.isValidId(trimmedLinkIndex)) {
+            throw new ParseException(InternshipId.MESSAGE_CONSTRAINTS);
+        }
+        return new LinkIndex(trimmedLinkIndex);
     }
 
     /**

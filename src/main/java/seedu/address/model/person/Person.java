@@ -25,6 +25,7 @@ public class Person {
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
+    private final LinkIndex linkIndex;
 
     /**
      * Every field must be present and not null except internship.
@@ -35,7 +36,8 @@ public class Person {
             Phone phone,
             Email email,
             InternshipId internshipId,
-            Set<Tag> tags) {
+            Set<Tag> tags,
+            LinkIndex linkIndex) {
         requireAllNonNull(name, phone, email, tags);
         this.personId = personId;
         this.name = name;
@@ -43,6 +45,7 @@ public class Person {
         this.email = email;
         this.internshipId = internshipId;
         this.tags.addAll(tags);
+        this.linkIndex = linkIndex;
     }
 
     public PersonId getPersonId() {
@@ -63,6 +66,15 @@ public class Person {
 
     public InternshipId getInternshipId() {
         return internshipId;
+    }
+
+    /**
+     * Returns an immutable index, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+
+    public LinkIndex getLinkIndex() {
+        return linkIndex;
     }
 
     /**
@@ -106,13 +118,14 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && Objects.equals(otherPerson.getPersonId(), getPersonId())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getLinkIndex().equals(getLinkIndex());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, tags);
+        return Objects.hash(name, phone, email, tags, linkIndex);
     }
 
     @Override
@@ -129,6 +142,7 @@ public class Person {
             builder.append("; Tags: ");
             tags.forEach(builder::append);
         }
+        builder.append("; Link Index:").append(getLinkIndex());
         return builder.toString();
     }
 

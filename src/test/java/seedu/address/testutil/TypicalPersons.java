@@ -2,6 +2,8 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.PersonCommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.PersonCommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.PersonCommandTestUtil.VALID_LINK_INDEX_AMY;
+import static seedu.address.logic.commands.PersonCommandTestUtil.VALID_LINK_INDEX_BOB;
 import static seedu.address.logic.commands.PersonCommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.PersonCommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.PersonCommandTestUtil.VALID_PHONE_AMY;
@@ -27,6 +29,7 @@ public class TypicalPersons {
             .withEmail("alice@example.com")
             .withPhone("94351253")
             .withTags("friends")
+            .withLinkIndex("1")
             .build();
     public static final Person BENSON = new PersonBuilder()
             .withPersonId(1)
@@ -34,6 +37,7 @@ public class TypicalPersons {
             .withEmail("johnd@example.com")
             .withPhone("98765432")
             .withTags("owesMoney", "friends")
+            .withLinkIndex("2")
             .build();
     public static final Person CARL = new PersonBuilder()
             .withPersonId(2)
@@ -45,6 +49,7 @@ public class TypicalPersons {
             .withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com")
             .withTags("friends")
+            .withLinkIndex("4")
             .build();
     public static final Person ELLE = new PersonBuilder()
             .withPersonId(4)
@@ -82,12 +87,14 @@ public class TypicalPersons {
             .withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
             .withEmail(VALID_EMAIL_AMY)
             .withTags(VALID_TAG_FRIEND)
+            .withLinkIndex(VALID_LINK_INDEX_AMY)
             .build();
     public static final Person BOB = new PersonBuilder()
             .withName(VALID_NAME_BOB)
             .withPhone(VALID_PHONE_BOB)
             .withEmail(VALID_EMAIL_BOB)
             .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withLinkIndex(VALID_LINK_INDEX_BOB)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

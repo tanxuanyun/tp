@@ -5,6 +5,7 @@ import java.util.Set;
 
 import seedu.address.model.internship.InternshipId;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.LinkIndex;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.PersonId;
@@ -21,6 +22,7 @@ public class PersonBuilder {
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
+    public static final Integer DEFAULT_LINK_INDEX = 0;
 
     private PersonId personId;
     private Name name;
@@ -28,6 +30,7 @@ public class PersonBuilder {
     private Email email;
     private InternshipId internshipId;
     private Set<Tag> tags;
+    private LinkIndex linkIndex;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -39,6 +42,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         internshipId = null;
         tags = new HashSet<>();
+        linkIndex = new LinkIndex(DEFAULT_LINK_INDEX);
     }
 
     /**
@@ -51,6 +55,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         internshipId = personToCopy.getInternshipId();
         tags = new HashSet<>(personToCopy.getTags());
+        linkIndex = personToCopy.getLinkIndex();
     }
 
     /**
@@ -102,8 +107,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code LinkIndex} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withLinkIndex(String index) {
+        this.linkIndex = new LinkIndex(index);
+        return this;
+    }
+
     public Person build() {
-        return new Person(personId, name, phone, email, internshipId, tags);
+        return new Person(personId, name, phone, email, internshipId, tags, linkIndex);
     }
 
 }
