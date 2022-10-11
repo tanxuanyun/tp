@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class LinkIndex {
     public static final String MESSAGE_CONSTRAINTS =
-            "Link Index must be a non-negative number, and it should not be blank";
+            "Link Index must be a non-negative number, and it can be blank";
 
     public final Integer index;
 
